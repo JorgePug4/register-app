@@ -5,12 +5,15 @@ import InputSearchVisitor from "./InputSearchVisitor";
 import "../../pages/Register/Register.css";
 import { brands_car } from "./Car_brands";
 import { useSelector } from "react-redux";
+import { boolean } from "yup";
 
 const RegisterForm = () => {
   const image = useSelector((state) => state.visitor.image);
   const refdpbutton = useRef(null);
+  const refcbComputer = useRef(null);
   const reftransportpbtn = useRef(null);
   const [viewPD, setViewPD] = useState(true);
+  const [isComputer, setIsComputer] = useState(false);
   const onChangeDataPersonal = () => {
     setViewPD(true);
     refdpbutton.current.parentElement.classList.add("tab-active");
@@ -20,6 +23,11 @@ const RegisterForm = () => {
     setViewPD(false);
     refdpbutton.current.parentElement.classList.remove("tab-active");
     reftransportpbtn.current.parentElement.classList.add("tab-active");
+  };
+  const onChangecbComputer = (event) => {
+    debugger;
+    let val = event.currentTarget.checked;
+    setIsComputer(val);
   };
   const [brands] = useState(brands_car);
   return (
@@ -64,6 +72,7 @@ const RegisterForm = () => {
               color: "",
             },
             imageData: "",
+            computer: false,
           }}
           validationSchema={DisplayingErrorMessagesSchema}
           onSubmit={(values) => {
@@ -132,7 +141,7 @@ const RegisterForm = () => {
                         <Field
                           name="affair"
                           type="text"
-                          className="Input-text"
+                          className="Input-text w-36"
                           placeholder="Asunto"
                         />
                         <label className="Input-label">Asunto</label>
@@ -153,12 +162,23 @@ const RegisterForm = () => {
                         )}
                       </div>
                       <div className="wrapper-input">
-                        <Field
-                          name="serial"
-                          type="text"
-                          className="Input-text"
-                          placeholder="Serie computadora:"
-                        />
+                        <div className="flex">
+                          <div class="content-rb w-8 flex items-center justify-center bg-blue-lighter border-t border-l border-b border-blue-lighter rounded-l text-blue-dark">
+                            <Field
+                              type="checkbox"
+                              name="computer"
+                              onClick={onChangecbComputer}
+                            />
+                          </div>
+                          <Field
+                            name="serial"
+                            type="text"
+                            className="Input-text"
+                            Style="border-bottom-left-radius: 0;border-top-left-radius: 0;"
+                            placeholder="Serie computadora"
+                            disabled={!isComputer}
+                          />
+                        </div>
                         <label className="Input-label">Serie computadora</label>
                         {touched.serial && errors.serial && (
                           <div className="error-input">{errors.serial}</div>

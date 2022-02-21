@@ -86,6 +86,10 @@ input[type="text"] {
   transition: box-shadow var(--transitionDuration);
   border: 1px solid var(--greyColor);
 }
+.content-rb {
+  border: 1px solid var(--greyColor);
+  border-right: 0px;
+}
 select {
   display: block;
   margin: 0;
