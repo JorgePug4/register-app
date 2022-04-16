@@ -11,6 +11,7 @@ export default function InputSearchVisitor(props) {
           search: "",
         }}
         onSubmit={(values) => {
+          console.log("Hola");
           // same shape as initial values
           console.log(values);
         }}
