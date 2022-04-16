@@ -1,25 +1,33 @@
 import React, { useRef } from "react";
 import { FiSearch } from "react-icons/fi";
 import "../../pages/Register/Register.css";
+import { Formik, Form, Field } from "formik";
 
 export default function InputSearchVisitor(props) {
-  const textRef = useRef(null);
-  const textOnchange = (event) => {
-    event.preventDefault();
-  };
   return (
     <div>
-      <span className="iconW">
-        <FiSearch />
-      </span>
-      <input
-        ref={textRef}
-        className="w-72"
-        type="text"
-        placeholder="Buscar Visitante..."
-        value=""
-        onChange={textOnchange}
-      />
+      <Formik
+        initialValues={{
+          search: "",
+        }}
+        onSubmit={(values) => {
+          // same shape as initial values
+          console.log(values);
+        }}
+      >
+        <Form>
+          <span className="iconW">
+            <FiSearch />
+          </span>
+          <Field
+            name="search"
+            type="text"
+            className="w-72"
+            placeholder="Buscar Visitante..."
+          />
+          <label className="Input-label">Buscar Visitante...</label>
+        </Form>
+      </Formik>
     </div>
   );
 }

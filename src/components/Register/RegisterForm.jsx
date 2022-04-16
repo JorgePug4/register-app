@@ -5,7 +5,6 @@ import InputSearchVisitor from "./InputSearchVisitor";
 import "../../pages/Register/Register.css";
 import { brands_car } from "./Car_brands";
 import { useSelector } from "react-redux";
-import { boolean } from "yup";
 
 const RegisterForm = () => {
   const image = useSelector((state) => state.visitor.image);
@@ -38,9 +37,9 @@ const RegisterForm = () => {
       <div className="float-right py-4">
         <InputSearchVisitor />
       </div>
-      <div class=" mx-auto mt-4  rounded">
-        <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
-          <li class="px-4 py-2 -mb-px font-semibold tab-active">
+      <div className=" mx-auto mt-4  rounded">
+        <ul id="tabs" className="inline-flex w-full px-1 pt-2 ">
+          <li className="px-4 py-2 -mb-px font-semibold tab-active">
             <a
               onClick={onChangeDataPersonal}
               ref={refdpbutton}
@@ -50,7 +49,7 @@ const RegisterForm = () => {
               Datos Perosnales
             </a>
           </li>
-          <li class="px-4 py-2 font-semibold">
+          <li className="px-4 py-2 font-semibold">
             <a
               onClick={onChangeTransport}
               ref={reftransportpbtn}
@@ -84,7 +83,7 @@ const RegisterForm = () => {
             <Form>
               <div id="tab-contents">
                 {viewPD ? (
-                  <div id="first" class="p-4">
+                  <div id="first" className="p-4">
                     <div className="wrapper-form">
                       <div className="wrapper-input">
                         <Field
@@ -163,7 +162,7 @@ const RegisterForm = () => {
                       </div>
                       <div className="wrapper-input">
                         <div className="flex">
-                          <div class="content-rb w-8 flex items-center justify-center bg-blue-lighter border-t border-l border-b border-blue-lighter rounded-l text-blue-dark">
+                          <div className="content-rb w-8 flex items-center justify-center bg-blue-lighter border-t border-l border-b border-blue-lighter rounded-l text-blue-dark">
                             <Field
                               type="checkbox"
                               name="computer"
@@ -173,8 +172,7 @@ const RegisterForm = () => {
                           <Field
                             name="serial"
                             type="text"
-                            className="Input-text"
-                            Style="border-bottom-left-radius: 0;border-top-left-radius: 0;"
+                            className="Input-text txtComputer"
                             placeholder="Serie computadora"
                             disabled={!isComputer}
                           />
@@ -200,7 +198,7 @@ const RegisterForm = () => {
                     </div>
                   </div>
                 ) : (
-                  <div id="transort" class="p-4">
+                  <div id="transort" className="p-4">
                     <div className="wrapper-form">
                       <div className="wrapper-input">
                         <Field
